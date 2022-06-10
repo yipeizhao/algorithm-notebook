@@ -6,5 +6,6 @@ First thought should include
 -- able to add, edit an entries
 -- initial version: parameter for every entry: name, last edit time(current time), description, example exists?, implemented function exsist?
 -- should be able to retrieve examples and impletented functions
+-- one folder for all examples and one folder for implemented functions
 -- should support pictures in the future
 -- should be able to open from terminal
