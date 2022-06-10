@@ -4,6 +4,7 @@ First thought should include
 -- stored in json files
 -- a json file for every category
 -- able to add, edit an entries
--- parameter for every entry: name, last edit time, description, example, implemented function
+-- initial version: parameter for every entry: name, last edit time(current time), description, example exists?, implemented function exsist?
+-- should be able to retrieve examples and impletented functions
 -- should support pictures in the future
 -- should be able to open from terminal
