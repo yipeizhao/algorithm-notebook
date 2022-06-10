@@ -1,0 +1,9 @@
+10/06/2022
+First thought should include
+-- recording all useful algorithms
+-- stored in json files
+-- a json file for every category
+-- able to add, edit an entries
+-- parameter for every entry: name, last edit time, description, example, implemented function
+-- should support pictures in the future
+-- should be able to open from terminal
