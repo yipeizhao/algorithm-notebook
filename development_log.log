@@ -11,12 +11,22 @@ First thought should include
 -- should be able to open from terminal
 
 11/06/2022
--- json files:
-{name:name,
-last_edt_time:current_time,
-description:description,
-example:[
-    {example1_name:name, description:description, approach:approach, codes:[codes.py;codes.cpp]};
-    {example1_name:name, description:description, approach:approach, codes:[codes.py;codes.cpp]};],
-function:[a.py;b.cpp]
+-- algos json file:
+{
+    "id":1,
+    "name":"test1",
+    "last_edited_time":"2022/06/11 11:53:00",
+    "descirption":"Test case 1",
+    "example":[
+        
+    ],
+    "function":[
+        
+    ]
 }
+-- records json file:
+{
+    "id":0,
+    "name":"test"
+}
+-- every algorithm should have an unique ID
