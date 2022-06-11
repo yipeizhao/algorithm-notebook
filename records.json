@@ -1,12 +1,5 @@
 {
-    "records": [
-        {
-            "id": 0,
-            "name": "test"
-        },
-        {
-            "id": 1,
-            "name": "test1"
-        }
-    ]
+    "0": "test",
+    "1": "test1",
+    "2": "test2"
 }
