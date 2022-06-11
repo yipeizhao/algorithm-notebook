@@ -3,14 +3,19 @@ from datetime import datetime
 
 class Notebook:
     def __init__(self):
+        self.update()
+
+    # Reload algorithms and records
+    def update(self):
         with open('records.json') as f:
             self.records = json.load(f)
         f.close()
-        self.id_no = len(self.records)+1
+        self.id_no = len(self.records)
         
         with open('algos.json') as f:
             self.algos = json.load(f)
         f.close()
+
     # Load an algorithm
     # para:
     # name, str. Algorithm name
@@ -28,18 +33,20 @@ class Notebook:
     # bool, successfully added or not
     def create(self, algo_name, time = datetime.now().strftime("%d/%m/%Y %H:%M:%S"), description=""):
         # Create algo json
-        if algo_name not in [item['name'] for item in self.records['records']]:
-            x = {'id':self.id_no,
+        if algo_name not in self.records.values():
+            x = {str(self.id_no):{
                  'name':algo_name,
                  'last_edited_time':time,
                  'description':description,
                  'example':[],
                  'function':[]
                 }
+            }
             write_json(x,'algos.json')
-            write_json({"id":self.id_no,"name":algo_name},'records.json')
+            write_json({self.id_no:algo_name},'records.json')
             # Increase id by 1
             self.id_no += 1
+            self.update()
             return True
         else:
             return False
@@ -53,6 +60,7 @@ class Notebook:
     # return:
     # Bool, successfully changed or not
     def edit(self,algo_name,attribute,content):
+        self.update()
         return 0
 
     # Add example record to an entry
@@ -71,6 +79,7 @@ class Notebook:
     # bool, wether the function is added or not
     def add_function(self,alg_name,file_path):
         return 0
+    
     # Delete an algorithm
     # para:
     # algo_name, str. Algorithm name
@@ -83,25 +92,31 @@ class Notebook:
     # para:
     # algo_name
     # return:
-    # list of strings. List of results
+    # res,json file
     def search(self,algo_name):
-        return 0
+        for key,val in self.records.items():
+            if val == algo_name:
+                return self.algos[key]
+        return None
 
     # Display info
-    # para: algo_name,str
+    # para:
+    # algo_name,str
     # return:
     # void
-    def display(self,algo,name):
+    def display(self,algo_name):
         return 0
     
 # function to add to JSON
 def write_json(new_data, filename):
     with open(filename,'r+') as file:
-          # First we load existing data into a dict.
         file_data = json.load(file)
         # Join new_data with file_data inside emp_details
-        file_data[list(file_data.keys())[0]].append(new_data)
+        file_data.update(new_data)
         # Sets file's current position at offset.
         file.seek(0)
         # convert back to json.
         json.dump(file_data, file, indent = 4)
+        file.close()
+
+note=Notebook()
